@@ -1,1 +1,21 @@
+Requirements:
 
+1. Retrospective analysis
+
+1.1 Each month a new statement can be used with the app in order to better understand the spending.
+
+1.2 The analysis of the data should include where money has been spent that month as well as a week by week breakdown of spending.
+
+1.3 The outputted analysis should be easy to read, the output should also have graphs for additional aid.
+
+Options:
+1. HTML report
+2. Write to excel.
+
+2. On the go check in.
+
+2.1 At any given day in a month, it must be possible to upload the current data for that month and understand how much has been spent
+
+2.2 The breakdown should compare to the average spend for each of the previous months.
+
+2.3 The breakdown should also alert the user as to what is and isnt possible in terms of spending for the remainder of the month.
