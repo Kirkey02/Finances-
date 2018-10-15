@@ -16,7 +16,7 @@ weekFour = {}
 spendingDates = []
 dateArray = []
 
-with open('test1.csv', 'r') as csvfile:
+with open('test.csv', 'r') as csvfile:
 	reader = csv.reader(csvfile, delimiter=',')
 
 	def loadDataIntoSummedDict():
@@ -226,6 +226,7 @@ with open('test1.csv', 'r') as csvfile:
 
 		print("Average spending this month so far:")
 		print(averageSpendThisMonth)
+
 
 
 	calculateCurrentSpendingThisMonth()
