@@ -16,55 +16,42 @@ weekFour = {}
 spendingDates = []
 dateArray = []
 
-with open('test.csv', 'r') as csvfile:
+with open('22Oct.csv', 'r') as csvfile:
 	reader = csv.reader(csvfile, delimiter=',')
 
 	def loadDataIntoSummedDict():
 		changeInBalance = 0
-		thisMonthSpending = 0
 		lastMonthSpending = 0
 		for row in reader:
 			price = row[2]
 			vendor = row[1]
 			date = row[0]
 
-			if (price):
-				splitDate = date.split('/')
-				month = splitDate[1]
-				thisMonth = getThisMonth()
-				lastMonth = getPreviousMonth()
-				nonStringPrice = Decimal(price)
-				print(nonStringPrice)
-
-				if (nonStringPrice < 0):
-
-					if (month == thisMonth):
-						thisMonthSpending += Decimal(price)
-					if (month == lastMonth):
-						lastMonthSpending += Decimal(price)
-
-				#dateOfMonth = int(date[:2])
-				changeInBalance += Decimal(price)
+			if (price):			
+				changeInBalance += float(price)
 				spendingDates.append(date)
 
 				if vendor not in allEntries:
 					allEntries[vendor] = Decimal(price)
 				else:
-					allEntries[vendor] += Decimal(price)
-		
+					allEntries[vendor] += Decimal(price)		
 
 			else:
 				bants = 100; #its lit	
-
-		print(thisMonthSpending)
-		print(lastMonthSpending)
+		print("This month spending:")
+		print(changeInBalance)
 
 		weekOneTotal = sum(weekOne.values())
 		weekTwoTotal = sum(weekTwo.values())
 		weekThreeTotal = sum(weekThree.values())
 		weekFourTotal = sum(weekFour.values())
 
-		return(changeInBalance, weekOneTotal, weekTwoTotal, weekThreeTotal, weekFourTotal, thisMonthSpending, lastMonthSpending)
+		return(changeInBalance, weekOneTotal, weekTwoTotal, weekThreeTotal, weekFourTotal)
+
+	def sortDataByWeek():
+		thisMonth = getThisMonth()
+		lastMonth = getPreviousMonth()
+		this
 
 	def fillSpendingAndCostsDicts():
 		totalCosts = 0
@@ -215,21 +202,35 @@ with open('test.csv', 'r') as csvfile:
 	def calculateCurrentSpendingThisMonth():
 		numberOfDaysSoFar = int(getToday())
 		numberOfDaysLastMonth = getPreviousMonthNumberOfDays(getPreviousMonth())
-		a,b,c,d,e,thisMonthSpending,lastMonthSpending = loadDataIntoSummedDict()
+		a,b,c,d,e = loadDataIntoSummedDict()
 
-		averageSpendLastMonth = lastMonthSpending / numberOfDaysLastMonth
-
-		averageSpendThisMonth = thisMonthSpending / numberOfDaysSoFar
-
-		print("Average Spending last month:")
-		print(averageSpendLastMonth)
+		averageSpendThisMonth = a / numberOfDaysSoFar
 
 		print("Average spending this month so far:")
 		print(averageSpendThisMonth)
 
-
-
 	calculateCurrentSpendingThisMonth()
 	
+					#dateOfMonth = int(date[:2])
+					#if dateOfMonth < 8:
+					#if vendor not in weekOne:
+					#	weekOne[vendor] = Decimal(price)
+					#else:
+				#		weekOne[vendor] += Decimal(price)
+				#elif dateOfMonth < 16:
+				#	if vendor not in weekTwo:
+				#		weekTwo[vendor] = Decimal(price)
+				#	else:
+				#		weekTwo[vendor] += Decimal(price)
+				#elif dateOfMonth < 24:
+				#	if vendor not in weekThree:
+				#		weekThree[vendor] = Decimal(price)
+				#	else:
+				#		weekThree[vendor] = Decimal(price)
+				#else:
+				#	if vendor not in weekFour:
+				#		weekFour[vendor] = Decimal(price)
+				#	else:
+				#		weekFour[vendor] = Decimal(price)	
 
 
